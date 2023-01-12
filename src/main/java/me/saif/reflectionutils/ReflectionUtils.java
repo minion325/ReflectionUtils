@@ -109,6 +109,10 @@ public class ReflectionUtils {
         return getFields(clazz, ignoreAccess, field -> type.isAssignableFrom(field.getType()));
     }
 
+    public static Set<Field> getFieldsOfTypeName(Class<?> clazz, String name, boolean ignoreAccess) {
+        return getFields(clazz, ignoreAccess, field -> field.getType().getSimpleName().equals(name));
+    }
+
     public static Set<Field> getPublicFieldsOfType(Class<?> clazz, Class<?> type) {
         return getFieldsOfType(clazz, type, false);
     }
